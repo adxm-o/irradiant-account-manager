@@ -1,8 +1,5 @@
 # Irradiant Account Manager
 
-Roblox account manager, split out of the main Irradiant app into its own program. Same gold/black theme,
-same vault, same multi instance switch, no editor or script hub.
-
 ## What it does
 
 - stores accounts from a `.ROBLOSECURITY` cookie, AES-256-GCM, on this machine only
