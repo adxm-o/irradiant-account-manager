@@ -1,0 +1,74 @@
+{
+  "name": "irradiant-accounts",
+  "productName": "Irradiant Accounts",
+  "version": "1.0.0",
+  "description": "Irradiant account manager",
+  "author": "Irradiant",
+  "license": "UNLICENSED",
+  "private": true,
+  "main": "dist-electron/main.js",
+  "scripts": {
+    "dev": "concurrently -k -n VITE,MAIN,APP -c yellow,magenta,green \"npm:dev:renderer\" \"npm:dev:main\" \"npm:dev:electron\"",
+    "dev:renderer": "vite",
+    "dev:main": "node scripts/build-electron.mjs --watch",
+    "dev:electron": "wait-on tcp:5274 dist-electron/main.js && cross-env NODE_ENV=development electron .",
+    "build": "npm run build:renderer && npm run build:main",
+    "build:renderer": "vite build",
+    "build:main": "node scripts/build-electron.mjs",
+    "start": "npm run build && electron .",
+    "package": "npm run build && electron-builder",
+    "typecheck": "tsc --noEmit",
+    "test:vault": "esbuild electron/vault.test.ts --bundle --platform=node --format=cjs --external:electron --outfile=node_modules/.cache/vault-test.cjs --log-level=error && electron node_modules/.cache/vault-test.cjs",
+    "test:launch": "esbuild electron/launch.test.ts --bundle --platform=node --format=cjs --external:electron --outfile=node_modules/.cache/launch-test.cjs --log-level=error && electron node_modules/.cache/launch-test.cjs",
+    "test:multi": "esbuild electron/multiInstance.test.ts --bundle --platform=node --format=cjs --external:electron --outfile=node_modules/.cache/multi-test.cjs --log-level=error && electron node_modules/.cache/multi-test.cjs",
+    "test": "npm run test:vault && npm run test:launch && npm run test:multi"
+  },
+  "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/outfit": "^5.3.0",
+    "@fontsource-variable/urbanist": "^5.3.0",
+    "framer-motion": "^11.11.17",
+    "lucide-react": "^0.462.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "cross-env": "^7.0.3",
+    "electron": "^33.2.1",
+    "electron-builder": "^25.1.8",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "gg.irradiant.accounts",
+    "productName": "Irradiant Accounts",
+    "files": [
+      "dist/**",
+      "dist-electron/**"
+    ],
+    "extraResources": [
+      {
+        "from": "build/icon.ico",
+        "to": "icon.ico"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "installerIcon": "build/icon.ico",
+      "uninstallerIcon": "build/icon.ico",
+      "installerHeaderIcon": "build/icon.ico",
+      "shortcutName": "Irradiant Accounts",
+      "createDesktopShortcut": true
+    }
+  }
+}
