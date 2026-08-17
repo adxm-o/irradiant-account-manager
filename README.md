@@ -1,4 +1,4 @@
-# Irradiant Accounts
+# Irradiant Account Manager
 
 Roblox account manager, split out of the main Irradiant app into its own program. Same gold/black theme,
 same vault, same multi instance switch, no editor or script hub.
@@ -28,14 +28,14 @@ or not, vault protection mode, delete vault.
 
 ## Vault location
 
-Separate program, separate data dir, so it gets its own vault:
+Separate program, separate data dir, so it gets its own vault. It lands in AppData\Roaming:
 
 ```
-%APPDATA%\Irradiant Accounts\accounts.vault
+C:\Users\<you>\AppData\Roaming\Irradiant Account Manager\accounts.vault
 ```
 
-The main Irradiant app keeps its own at `%APPDATA%\Irradiant\accounts.vault`. They are not shared. Either
-add the accounts again here or copy the file over if both are on the same protection mode.
+The main Irradiant app keeps its own next door in `Roaming\Irradiant\accounts.vault`. They are not shared.
+Either add the accounts again here or copy the file over if both are on the same protection mode.
 
 ## Running it
 

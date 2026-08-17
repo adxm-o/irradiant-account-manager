@@ -18,7 +18,7 @@ export default function TitleBar() {
       <div className="titlebar-left">
         <Logo size={24} />
         <span className="brand-word">Irradiant</span>
-        <span className="badge neutral">accounts</span>
+        <span className="badge neutral">account manager</span>
       </div>
 
       <div className="titlebar-right">

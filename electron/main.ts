@@ -70,7 +70,7 @@ function createWindow() {
     show: false,
     frame: false,
     backgroundColor: '#070707',
-    title: 'Irradiant Accounts',
+    title: 'Irradiant Account Manager',
     autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
@@ -163,7 +163,7 @@ function createQuick() {
     skipTaskbar: true,
     alwaysOnTop: settings().quickAlwaysOnTop,
     backgroundColor: '#0a0908',
-    title: 'Irradiant quick switch',
+    title: 'Irradiant Account Manager quick switch',
     webPreferences: {
       preload: path.join(__dirname, 'preload.js'),
       contextIsolation: true,
@@ -243,7 +243,7 @@ function trayMenu() {
 
   return Menu.buildFromTemplate([
     { label: 'Quick switch', click: showQuick },
-    { label: 'Open Irradiant Accounts', click: showMain },
+    { label: 'Open Irradiant Account Manager', click: showMain },
     { type: 'separator' },
     ...(accountItems.length > 0
       ? [{ label: 'Launch as', submenu: accountItems }]
@@ -281,7 +281,7 @@ function createTray() {
   const iconPath = resolveIcon();
   const image = iconPath ? nativeImage.createFromPath(iconPath) : nativeImage.createEmpty();
   tray = new Tray(image.isEmpty() ? image : image.resize({ width: 16, height: 16 }));
-  tray.setToolTip('Irradiant Accounts');
+  tray.setToolTip('Irradiant Account Manager');
   tray.on('click', () => (settings().trayClickOpensQuick ? toggleQuick() : showMain()));
   tray.on('double-click', showMain);
   refreshTray();
@@ -478,7 +478,7 @@ if (!singleInstance) {
   });
 
   app.whenReady().then(() => {
-    if (process.platform === 'win32') app.setAppUserModelId('gg.irradiant.accounts');
+    if (process.platform === 'win32') app.setAppUserModelId('gg.irradiant.accountmanager');
     registerIpc();
     createWindow();
     createTray();

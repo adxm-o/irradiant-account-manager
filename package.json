@@ -1,6 +1,6 @@
 {
-  "name": "irradiant-accounts",
-  "productName": "Irradiant Accounts",
+  "name": "irradiant-account-manager",
+  "productName": "Irradiant Account Manager",
   "version": "1.0.0",
   "description": "Irradiant account manager",
   "author": "Irradiant",
@@ -47,8 +47,12 @@
     "wait-on": "^8.0.1"
   },
   "build": {
-    "appId": "gg.irradiant.accounts",
-    "productName": "Irradiant Accounts",
+    "appId": "gg.irradiant.accountmanager",
+    "productName": "Irradiant Account Manager",
+    "artifactName": "Irradiant-Account-Manager-${version}-setup.${ext}",
+    "directories": {
+      "output": "release"
+    },
     "files": [
       "dist/**",
       "dist-electron/**"
@@ -67,7 +71,7 @@
       "installerIcon": "build/icon.ico",
       "uninstallerIcon": "build/icon.ico",
       "installerHeaderIcon": "build/icon.ico",
-      "shortcutName": "Irradiant Accounts",
+      "shortcutName": "Irradiant Account Manager",
       "createDesktopShortcut": true
     }
   }

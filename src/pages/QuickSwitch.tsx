@@ -51,7 +51,7 @@ export default function QuickSwitch() {
   }, [load]);
 
   useEffect(() => {
-    document.title = 'Irradiant quick switch';
+    document.title = 'Irradiant Account Manager quick switch';
     const handler = (event: KeyboardEvent) => {
       if (event.key === 'Escape') window.irradiant.quick.hide();
     };
